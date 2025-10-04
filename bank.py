@@ -1,7 +1,19 @@
 initial_balance = float(input("Enter initial balance: "))
 
-deposit = float(input("Enter amount to deposit: "))
+transaction_type = input("Enter transaction type (deposit/withdraw): ").lower()
 
-updated_balance = initial_balance + deposit
+amount = float(input("Enter amount: "))
 
-print("Updated balance after deposit is:", updated_balance)
+if transaction_type == "deposit":
+    updated_balance = initial_balance + amount
+elif transaction_type == "withdraw":
+    if amount > initial_balance:
+        print("Insufficient balance!")
+        updated_balance = initial_balance
+    else:
+        updated_balance = initial_balance - amount
+else:
+    print("Invalid transaction type!")
+    updated_balance = initial_balance
+
+print("Updated balance is:", updated_balance)
